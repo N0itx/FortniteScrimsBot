@@ -3,10 +3,10 @@ const Discord = require('discord.js');
 const settings = require('./settings.json');
 const fs = require('fs');
 
-//require('dotenv/config');//
-//const http = require('http');
-//const port = process.env.PORT || 3000;
-//http.createServer().listen(port);//this is a simple server
+require('dotenv/config');//
+const http = require('http');
+const port = process.env.PORT || 3000;
+http.createServer().listen(port);//this is a simple server
 
 // initialise are bot
 const bot = new Discord.Client();
@@ -14,8 +14,8 @@ bot.commands = new Discord.Collection();
 
 // import bot setting (data)
 const prefix = settings.prefix;
-const token = settings.token;
-//const token = process.env.TOKEN;
+//const token = settings.token;
+const token = process.env.TOKEN;
 const owner = settings.owner;
 
 //read commands files
