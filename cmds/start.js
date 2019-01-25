@@ -14,15 +14,14 @@ module.exports.run = async (bot, message, args) => {
     let editLast3 = null;
 
     let statMessage = new Discord.RichEmbed()
-        .setAuthor(bot.user.username, bot.user.avatarURL)	
-        .setTitle("Fortnite Scrims : " + modo)
-        .setDescription("Por favor escriba los últimos 3 códigos de su ID de partida")
+        .setAuthor("Fortnite Scrims", bot.user.avatarURL)
+        .addField("Iniciando Partida" , "Empieza una scrim. Sigue las instrucciones a continuación y cualquier otro mensaje que envíe el bot.")
+        .addField("Modo de juego", modo)
+        .addField("Instrucciones", "Por favor escriba los últimos 3 digitos de su ID de partida")
         .setFooter("ShiroLB#1110 for more support", "https://i.imgur.com/GiSGs06.png")
         .setColor("#FFB200");
     
     message.channel.send({embed: statMessage});
-
-
 
     let last3 = new Discord.RichEmbed()
         .setTitle("Ultimos 3 digitos")
@@ -69,7 +68,8 @@ module.exports.run = async (bot, message, args) => {
             for (var j = 0; j < game.data[i].users.length; j++){
                 str += game.data[i].users[j] + "\n";
             }
-            last3.addField(`${game.data[i].id.toUpperCase()} - ${game.data[i].users.length} Players`, str, true);
+            last3.addField(`${game.data[i].id.toUpperCase()} - ${game.data[i].users.length} players`, str, true);
+            last3.setFooter(`[ ${game.data.length} Servers | ${game.users.length} Players ]`)
         }
 
         let time = 3;
