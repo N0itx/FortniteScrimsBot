@@ -7,6 +7,8 @@ module.exports.run = async (bot,message,args) => {
 
     if (!args[0]) return message.channel.send("Especifica los minutos!").then(msg => msg.delete(5000));
 
+    message.channel.send("@everyone");
+
     let timeEmbed = new Discord.RichEmbed()
 		.setAuthor(bot.user.username, bot.user.avatarURL)
         .setTitle("Siguiente partida en :")

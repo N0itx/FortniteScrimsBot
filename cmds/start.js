@@ -15,10 +15,10 @@ module.exports.run = async (bot, message, args) => {
 
     let statMessage = new Discord.RichEmbed()
         .setAuthor("Fortnite Scrims", bot.user.avatarURL)
-        .addField("Iniciando Partida" , "Empieza una scrim. Sigue las instrucciones a continuación y cualquier otro mensaje que envíe el bot.")
+        .addField("Iniciando Partida", "Empieza una scrim. Sigue las instrucciones a continuación y cualquier otro mensaje que envíe el bot.")
         .addField("Modo de juego", modo)
         .addField("Instrucciones", "Por favor escriba los últimos 3 digitos de su ID de partida")
-        .setFooter("ShiroLB#1110 for more support", "https://i.imgur.com/GiSGs06.png")
+        .setFooter("Usa !help para mas info")
         .setColor("#FFB200");
     
     message.channel.send({embed: statMessage});
@@ -31,10 +31,12 @@ module.exports.run = async (bot, message, args) => {
         editLast3 = await message.channel.send({embed: last3});
     }, 10);
 
+    message.channel.send("@everyone");
+
     const collector = snipeChannel.createMessageCollector(filter, {max: 200, maxMatches: 200, time: 180000});
 
     collector.on('collect', m => {
-        console.log(`Collected ${m.content} | ${m.author.username}`);
+        //console.log(`Collected ${m.content} | ${m.author.username}`);
 
         if (game.data.length === 0 && m.content.length === 3){
             game.addID(m.content.toUpperCase(), m.author);
