@@ -16,7 +16,4 @@
   },
   "author": "",
   "license": "ISC"
-  "engines": {
-    "node": "12.13.0"
-  }
 }
